@@ -11,7 +11,13 @@ const PORT = 8080;
 // initialize DataBase
 initializeDatabase();
 app.use(bodyParser.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
+
 const server = http.createServer(app);
 // Import routes
 const authRoutes = require("./routes/authRoutes");
