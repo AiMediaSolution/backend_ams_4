@@ -17,7 +17,6 @@ function authenticateToken(req, res, next) {
       // Forbidden
       return res.status(403).json({ message: "Token is not valid" });
     }
-    console.log("[authenticateToken] Running");
     req.user = user;
     next();
   });

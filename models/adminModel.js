@@ -34,11 +34,7 @@ async function createAccount(accountType, username, password, callback) {
 
 // Read all account in dataBase by Admin
 function readAllAccounts(callback) {
-  db.all(
-    `SELECT * FROM data  
-    `,
-    callback
-  );
+  db.all(`SELECT * FROM data ORDER BY data_Id DESC`, callback);
 }
 
 // Read all account in dataBase by Manager
