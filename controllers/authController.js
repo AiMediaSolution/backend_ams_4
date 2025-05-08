@@ -9,10 +9,8 @@ const {
   getRefreshTokenByUserId,
 } = require("../models/accountModel");
 
-// Login and create access token and refresh token
 async function login(req, res) {
   const { username, password } = req.body;
-  // get user by name
   getUserByUsername(username, async (err, user) => {
     if (err) return res.status(500).json({ error: "Server error" });
 
@@ -48,10 +46,8 @@ async function login(req, res) {
   });
 }
 
-// Refresh access token with refresh token
 function refreshToken(req, res) {
   const { refreshToken } = req.body;
-
   if (!refreshToken)
     return res.status(401).json({ error: "No refresh token provided" });
 
@@ -63,15 +59,26 @@ function refreshToken(req, res) {
       if (!storedToken || storedToken !== refreshToken) {
         return res.status(403).json({ error: "Refresh token mismatch" });
       }
-
       const newAccessToken = jwt.sign(
         { account_Id: user.account_Id, account_type: user.account_type },
         process.env.ACCESS_TOKEN_SECRET,
-        { expiresIn: "15m" }
+        { expiresIn: "10s" }
       );
       res.json({ accessToken: newAccessToken });
     });
   });
 }
+function getUserInformation(req, res) {
+  const user = req.user;
+  if (!user) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
 
-module.exports = { login, refreshToken };
+  res.json({
+    account_Id: user.account_Id,
+    account_type: user.account_type,
+    username: user.username,
+  });
+}
+
+module.exports = { login, refreshToken, getUserInformation };

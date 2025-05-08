@@ -1,5 +1,10 @@
 const express = require("express");
-const { login, refreshToken } = require("../controllers/authController");
+const {
+  login,
+  refreshToken,
+  getUserInformation,
+} = require("../controllers/authController");
+const { authenticateToken } = require("../middlewares/authMiddleware");
 
 const router = express.Router();
 
@@ -9,4 +14,7 @@ router.post("/login", login);
 router.post("/token", refreshToken);
 // Route to get refresh Token
 router.post("/refresh-token", refreshToken);
+
+router.get("/user", authenticateToken, getUserInformation);
+
 module.exports = router;

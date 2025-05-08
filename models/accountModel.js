@@ -57,10 +57,21 @@ function getRefreshTokenByUserId(accountId, callback) {
   );
 }
 
+function getAccountById(accountId, callback) {
+  db.get(
+    `SELECT * FROM account WHERE account_Id = ?`,
+    [accountId],
+    (err, row) => {
+      if (err) return callback(err);
+      callback(null, row);
+    }
+  );
+}
 module.exports = {
   getUserByUsername,
   createUser,
   saveRefreshToken,
   getRefreshTokenByUserId,
   createCustomerAccount,
+  getAccountById,
 };

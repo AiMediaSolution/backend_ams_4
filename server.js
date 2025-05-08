@@ -9,7 +9,6 @@ app.use(bodyParser.json());
 
 app.post("/api/contact", async (req, res) => {
   const { name, email, message } = req.body;
-  console.log(name, email, message, "ne");
   if (!name || name.length < 3) {
     return res
       .status(400)

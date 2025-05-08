@@ -19,7 +19,7 @@ app.use(
 );
 
 const server = http.createServer(app);
-// Import routes
+// Import routesx
 const authRoutes = require("./routes/authRoutes");
 const dataRoutes = require("./routes/dataRoutes");
 const adminRoutes = require("./routes/adminRoutes");
