@@ -4,7 +4,7 @@ const fs = require("fs");
 
 // const uploadPath = path.resolve(__dirname, "../../uploads");
 // const uploadPath = path.resolve(__dirname, "../uploads");
-const uploadPath = "/home/vmadmin/uploads";
+const uploadPath = "/home/vmadmin/project/uploads";
 console.log("Upload path:", uploadPath);
 if (!fs.existsSync(uploadPath)) {
   fs.mkdirSync(uploadPath);
