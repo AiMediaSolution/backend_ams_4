@@ -35,7 +35,7 @@ function getAllData(callback) {
 }
 function getDataShow(callback) {
   db.all(
-    `SELECT * FROM data WHERE data.is_deleted == 0  ORDER BY data.date DESC LIMIT 5`,
+    `SELECT * FROM data WHERE data.is_deleted == 0  ORDER BY data.date DESC LIMIT 18`,
     [],
     callback
   );
