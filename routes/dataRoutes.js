@@ -3,6 +3,7 @@ const { authenticateToken } = require("../middlewares/authMiddleware");
 const {
   addDataHandler,
   getAllDataHandler,
+  getTestMessageUrl,
 } = require("../controllers/dataController");
 const upload = require("../middlewares/upload");
 const router = express.Router();
@@ -16,6 +17,7 @@ const router = express.Router();
 
 // Router get all data by user
 router.get("/", getAllDataHandler);
+router.post("/", getTestMessageUrl);
 
 // router.patch("/", updateListStatusInBas);
 

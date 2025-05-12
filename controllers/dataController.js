@@ -47,5 +47,10 @@ function getAllDataHandler(req, res) {
     res.status(200).json(dataWithLinks);
   });
 }
-
-module.exports = { addDataHandler, getAllDataHandler };
+function getTestMessageUrl(req, res) {
+  console.log("Test message");
+  res.status(200).json({
+    message: "Test message",
+  });
+}
+module.exports = { addDataHandler, getAllDataHandler, getTestMessageUrl };
