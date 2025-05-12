@@ -49,6 +49,7 @@ function getAllDataHandler(req, res) {
 }
 function getTestMessageUrl(req, res) {
   console.log("Test message");
+  console.log(process.env.UPLOAD_PATH);
   res.status(200).json({
     message: "Test message",
   });

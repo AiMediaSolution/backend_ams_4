@@ -2,9 +2,10 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
-// const uploadPath = path.resolve(__dirname, "../../uploads");
-// const uploadPath = path.resolve(__dirname, "../uploads");
-const uploadPath = "/home/vmadmin/project/uploads";
+const uploadPath = path.resolve(
+  __dirname,
+  process.env.UPLOAD_PATH || "../../uploads"
+);
 console.log("Upload path:", uploadPath);
 if (!fs.existsSync(uploadPath)) {
   fs.mkdirSync(uploadPath);
